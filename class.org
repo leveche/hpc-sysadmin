@@ -1,0 +1,61 @@
+#+TITLE: SGI UV HPC
+- lspci
+- lsscsi
+- dmidecode
+- /sys
+  devices: /devices, /bus
+  app interfaces: /class, /block
+  /dev entries created from /sys entries by udevd
+  =udevadm trigger -verbose= prints out /devices entries
+- gpt and msdos partition types
+- parted
+- /dev entries created from /sys entries
+  udevd map
+** sysctl
+- =sysctl=, =/proc/sys=
+- =sysctl -w=
+- =/etc/sysctl.conf=
+- =sar=
+*** Process Table
+- =ulimit= in =/etc/security/limits.conf=
+- =/proc/<pid>/task/<tid>/*= for thread info
+- process table is task_struct in the slab. =slabtop -s c=
+- =sar -q=
+** Virtual Memory
+** Swap IO
+** File System Layout
+** RAID
+** XVM
+** XFS
+** Page Cache
+** IPC
+** CPU Scheduler
+** Multi-CPU issues
+** Kernel Locks
+** XFS filesystem
+- xfsdump
+** NUMA tools
+- cpumap
+- taskset
+- dplace
+- dlook
+- bootcpuset
+- numactl
+** crash, KDB, SysRq
+- crash
+  - ps
+  - bt
+  - task
+- kdb
+- sysrq
+  - /proc/sys/kernel/sysrq
+- kexec
+  - directly loads and executes into a new kernel
+  - kexec-tools, kdump, crash
+  - /etc/init.d/kexec
+  - bypasses bios/firmware hardware init
+  - can be triggered by panic, or sysrq trigger
+- kdump
+  - can dump over NFS, FTP, or SSH
+  - dump created from the newly booted kernel, not the panicked one
+    - /etc/sysconfig/kdump
